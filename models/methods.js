@@ -1,13 +1,21 @@
 const mongoose = require('mongoose');
-const confif = require('../config/data');
+const config = require('../config/data');
 
 const UserSchema = mongoose.Schema({
     id: {
         type: Number,
         required: true
     },
-    name: {
+    studentname: {
         type: String,
+        required: true
+    },
+    branch: {
+        type: String,
+        required: true
+    },
+    marks: {
+        type: Number,
         required: true
     }
 })

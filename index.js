@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const config = require('./config/data');
+const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 //instance
 const app = express();
@@ -25,6 +27,12 @@ app.get('/', function (req, res) {
     console.log('this is a get request');
     res.send('this is a get request');
 })
+
+//passport middleware
+app.use(passport.initialize())
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 //port
 app.listen(3000, () => {
